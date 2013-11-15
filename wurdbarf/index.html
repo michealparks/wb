@@ -1,0 +1,91 @@
+<!DOCTYPE HTML>
+
+<html lang="en" ng-app="wurdbarf">
+
+<head ng-controller="metaCtrl">
+	<title>wurdbarf</title>
+	<meta name="description" content="The worst social networking site in the world.">
+
+	<link rel="publisher" href="https://plus.google.com/wurdbarf"/>
+
+	<link href='http://fonts.googleapis.com/css?family=Raleway:500' rel='stylesheet' type='text/css'>
+	<link rel="stylesheet" type="text/css" href="default.min.css">
+
+	<!-- Development scripts. -->
+	<script src="http://localhost:35729/livereload.js"></script>
+	<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.2.0/angular.js"></script>
+	<script src="http://ajax.googleapis.com/ajax/libs/angularjs/1.2.0-rc.2/angular-animate.js"></script>
+	<script src="hammer.min.js"></script>
+	<script src="angular-hammer.js"></script>
+
+	<!-- Production scripts. -->
+	<!--<script src="http://ajax.googleapis.com/ajax/libs/angularjs/1.2.0-rc.2/angular.min.js"></script>
+    <script src="http://ajax.googleapis.com/ajax/libs/angularjs/1.2.0-rc.2/angular-animate.min.js"></script>-->
+
+	<script src="app.min.js"></script>
+
+</head>
+<body ng-controller="appCtrl">
+	<section id="view" ng-include="view"></section>
+
+	<!-- Templates -->
+	<script type="text/ng-template" id="login-template">
+	<section class="login-view" ng-controller="loginCtrl">
+		<div class="center" ng-class="{left : aboutView}">
+			<div class="title-block">
+				<h1>wurdbarf</h1>
+				<p>{{descript}}</p>
+			</div>
+			<div class="login-block">
+				<input class="username" ng-model="user.name" placeholder="username">
+				<input class="password" ng-model="user.pass" type="password" placeholder="password">
+				<center>
+				<button
+				class="submit-btn"
+				ng-click="login()">Submit</button></center>
+			</div>
+		</div>
+
+		<div class="options-block">
+			<button class="wtf" ng-click="toggleAbout(true)">WTF?</button>
+			<button class="reg-btn">Register</button>
+		</div>
+
+		<div class="about-block" ng-class="{shown : aboutView}">
+			<center>
+			<h1>Words?</h1>
+			<h2>In my barf?</h2>
+			<p>We understand your apprehension.  Hence, <span class="wurdbarf">wurdbarf</span>. Here, you don't have to worry about politely masking the true reason why you use social networks. It's really all about barfing on people and asking them to lick it off because you know what's inside of you is <em>pretty tasty</em>. So be a pilgrim and descend into the vomitorium by crafting your first barf today. You won't regret it once you purge.</p>
+			</center>
+		</div>
+	</section>
+	</script>
+
+	<script type="text/template" id="home-template">
+	<section class="home-view" ng-controller="homeCtrl">
+		<h1>We're here! We're here!</h1>
+	</section>
+	</script>
+
+	<script type="text/template" id="logout-template">
+	<section class="logout-view" ng-controller="">
+		<div class="title">
+		<h3>Thank you for letting <span class="wurdbarf">wurdbarf</span> use you.</h3>
+		<p>We hope your experience was uncomfortable.</p>
+		<p>If you happened to be satisfied after this experience, please feel free to contact our customer disservice at 1-800-341-2364 or <button>return to the abuse</button>.</p>
+		<div>
+
+	</section>
+	</script>
+
+	<script type="text/template" id="old-browser-template">
+	<section class="old-browser-view">
+		<h1>No.</h1>
+		<p>Do you even like the internet?</p>
+		<p>...</p>
+		<p>We thought so. You'll probably enjoy it more when you upgrade your browser to one of these.</p>
+	</section>
+	</script>
+</body>
+
+</html>
