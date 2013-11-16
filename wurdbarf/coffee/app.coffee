@@ -18,6 +18,7 @@ factories.factory 'AppData', () ->
 		'A social network for sadomasochists.'
 		'Leave useful discourse at the door.'
 		'Disgorge in many flavors.'
+
 	]
 	view : 'login-template'
 
@@ -35,8 +36,6 @@ wbLoginModule.controller 'loginCtrl', [
 		$scope.toggleAbout    = (bool) -> $scope.aboutView = bool
 		$scope.toggleRegister = (bool) -> $scope.regView   = bool
 
-		$scope.login = () -> AppData.view = 'home-template'
-
 ]
 
 wbHomeModule.controller 'homeCtrl', [
@@ -46,6 +45,22 @@ wbHomeModule.controller 'homeCtrl', [
 wbAppModule.controller 'appCtrl', [
 	'$scope', '$timeout', 'AppData', ($scope, $timeout, AppData) ->
 		$scope.view = AppData.view
+
+		$scope.login = () -> $scope.view = 'home-template'
 ]
 
-do () -> true
+KinveyModule = do () ->
+	promise = Kinvey.init
+		appKey    : 'App Key'
+		appSecret : 'App Secret'
+
+	promise.then (activeUser) ->
+		console.log activeUser
+	, (error) ->
+		console.log error
+
+	promise = Kinvey.ping()
+	promise.then () ->
+		console.log 'Kinvey ping success. Kinvey service is alive, version: ', + response.version + ', response: ' + response.kinvey
+	, (error) ->
+		console.log 'Kinvey Ping Failed. Response: ' + error.description

@@ -1,4 +1,4 @@
-var factories, wbAppModule, wbHomeModule, wbLoginModule, wbMetaModule;
+var KinveyModule, factories, wbAppModule, wbHomeModule, wbLoginModule, wbMetaModule;
 
 factories = angular.module('factories', []);
 
@@ -37,11 +37,8 @@ wbLoginModule.controller('loginCtrl', [
     $scope.toggleAbout = function(bool) {
       return $scope.aboutView = bool;
     };
-    $scope.toggleRegister = function(bool) {
+    return $scope.toggleRegister = function(bool) {
       return $scope.regView = bool;
-    };
-    return $scope.login = function() {
-      return AppData.view = 'home-template';
     };
   }
 ]);
@@ -50,10 +47,28 @@ wbHomeModule.controller('homeCtrl', ['$scope', '$timeout', function($scope, $tim
 
 wbAppModule.controller('appCtrl', [
   '$scope', '$timeout', 'AppData', function($scope, $timeout, AppData) {
-    return $scope.view = AppData.view;
+    $scope.view = AppData.view;
+    return $scope.login = function() {
+      return $scope.view = 'home-template';
+    };
   }
 ]);
 
-(function() {
-  return true;
+KinveyModule = (function() {
+  var promise;
+  promise = Kinvey.init({
+    appKey: 'App Key',
+    appSecret: 'App Secret'
+  });
+  promise.then(function(activeUser) {
+    return console.log(activeUser);
+  }, function(error) {
+    return console.log(error);
+  });
+  promise = Kinvey.ping();
+  return promise.then(function() {
+    return console.log('Kinvey ping success. Kinvey service is alive, version: ', +response.version + ', response: ' + response.kinvey);
+  }, function(error) {
+    return console.log('Kinvey Ping Failed. Response: ' + error.description);
+  });
 })();
