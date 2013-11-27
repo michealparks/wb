@@ -1,0 +1,30 @@
+doctype 5
+
+html(lang='en', ng-app="wurdbarf")
+  head(ng-controller="metaCtrl")
+    title wurdbarf
+    meta(name="description", content="The worst social networking site in the world.")
+
+    link(rel="publisher", href="https://plus.google.com/wurdbarf")
+
+    //- Font families.
+    link(href='http://fonts.googleapis.com/css?family=Alice', rel='stylesheet', type="text/css")
+    link(href='http://fonts.googleapis.com/css?family=Raleway:500', rel='stylesheet', type="text/css")
+
+    link(href='main.css', rel='stylesheet', type="text/css")
+
+    //- Dev scripts.
+    script(src='http://localhost:35729/livereload.js')
+    script(src='https://ajax.googleapis.com/ajax/libs/angularjs/1.2.0/angular.js')
+    script(src='http://ajax.googleapis.com/ajax/libs/angularjs/1.2.0-rc.2/angular-animate.js')
+
+    //- Production scripts.
+    //- script(src='http://ajax.googleapis.com/ajax/libs/angularjs/1.2.0-rc.2/angular.min.js')
+    //- script(src='http://ajax.googleapis.com/ajax/libs/angularjs/1.2.0-rc.2/angular-animate.min.js')
+
+    script(src='hammer.min.js')
+    script(src='angular-hammer.js')
+    script(src='app.js')
+
+  body(ng-controller="appCtrl" ng-include='view')
+

@@ -1,0 +1,24 @@
+script#login-template(type='text/ng-template')
+  section.login-view(ng-switch-when='login' ng-controller="loginCtrl")
+    div.center(ng-class="{left : aboutView}")
+      div.title-block
+        h1 wurdbarf
+          p {{descript}}
+    
+      div.login-block
+        input.username(ng-model="user.name", placeholder="username")
+        input.password(ng-model="user.pass", placeholder="password", type="password")
+        center
+          button.submit-btn(ng-click="login()") Submit
+    
+    div.options-block
+      button.wtf(ng-click='toggleAbout(true)') WTF?
+      button.reg-btn(ng-click='') Register
+    
+    div.about-block(ng-class='{shown : aboutView}')
+      center
+        h1 Words?
+        h2 In my barf?
+        p.
+          
+        div.icon-arrow-right(ng-click="toggleAbout(false)")
